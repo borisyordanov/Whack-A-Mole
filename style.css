@@ -1,10 +1,7 @@
 html {
   box-sizing: border-box;
   font-size: 10px;
-  /*background: #ffc600;*/
-  background-image: url("farm.png");
-  background-repeat: no-repeat;
-  background-position: 10% ; 
+  background: url("farm.png") no-repeat center center fixed;
   background-size: cover;
 }
 
@@ -48,7 +45,7 @@ h1 {
   flex: 1 0 33.33%;
   overflow: hidden;
   position: relative;
-  top: 20%;
+  top: 45%;
 }
 
 .hole:after {

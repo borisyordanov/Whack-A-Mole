@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Whack A Mole!</title>
   <link href='https://fonts.googleapis.com/css?family=Amatic+SC:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <section id="buttons">
     <a href="#" class="high-score"> Highest score: <span id="highScore">0</span></a>
@@ -14,9 +16,7 @@
     <a href="#" class="action-button shadow animate yellow" onClick="startHardGame()">Hard</a>
     <a href="#" class="action-button shadow animate red" onClick="startImposssibleGame()">Impossible</a>
   </section>
-
   <h1>Whack-a-mole! <span class="score">0</span></h1>
-
   <div class="game">
     <div class="hole hole1">
       <div class="mole"></div>
@@ -37,8 +37,7 @@
       <div class="mole"></div>
     </div>
   </div>
-
-<script>
+  <script>
   const holes = document.querySelectorAll('.hole');
   const scoreBoard = document.querySelector('.score');
   const moles = document.querySelectorAll('.mole');
@@ -46,6 +45,7 @@
   let timeUp = false;
   let score = 0;
   let level;
+  document.querySelector("#highScore").innerHTML = localStorage.getItem("score");
 
   function randomTime(min, max) {
     return Math.round(Math.random() * (max - min) + min);
@@ -63,7 +63,7 @@
   }
 
   function peep() {
-    const time = randomTime(level, level*4);
+    const time = randomTime(level, level * 4);
     const hole = randomHole(holes);
     hole.classList.add('up');
     setTimeout(() => {
@@ -86,7 +86,7 @@
     setTimeout(() => timeUp = true, 20000);
     startEasyGame();
   }
-  
+
   function startEasyGame() {
     document.querySelector('.blue').classList.add('active');
     document.querySelector('.red').classList.remove('active');
@@ -108,16 +108,15 @@
   }
 
   function bonk(e) {
-    if(!e.isTrusted) return; // cheater!
+    if (!e.isTrusted) return; // cheater!
     score++;
     this.classList.remove('up');
     scoreBoard.textContent = score;
   }
 
-
-
   moles.forEach(mole => mole.addEventListener('click', bonk));
-
-</script>
+  
+  </script>
 </body>
+
 </html>
